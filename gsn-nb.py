@@ -81,7 +81,9 @@ PDBFile.writeFile(
 
 
 # Write the trajectory to a file called "output.pdb"
-simulation.reporters.append(DCDReporter("output.dcd", 1000))
+simulation.reporters.append(
+    DCDReporter("output.dcd", reportInterval=1000, enforcePeriodicBox=True)
+)
 
 
 Nsteps = 5000
@@ -107,6 +109,7 @@ simulation.reporters.append(
         totalSteps=Nsteps,
     )
 )
+
 
 # Run the simulation for 1000 timesteps
 print("Running simulation...")
